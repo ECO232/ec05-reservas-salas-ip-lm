@@ -48,6 +48,11 @@ app.post('/users', (req, res) => {
   res.status(201).send({"message":"Creación Exitosa!", "user":newUser})
 })
 
+app.get('/', (req, res) => {
+  res.send("Reserva tu sala")
+})
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
