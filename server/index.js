@@ -59,6 +59,10 @@ app.delete('users/:id', (req, res) => {
   res.send("Se eliminó correctamente el usuario con id:" + userDeleted[0].id)
 })
 
+app.use("", (req, res) => {
+  res.status(404).send("No encontramos el recurso solicitado")
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
