@@ -29,6 +29,17 @@ app.get('/users/:id', (req, res) => {
   res.json(requiredUser)
 })
 
+app.post('/users', (req, res) => {
+  const userValidationResult = validateUser(req.body)
+  console.log("result", userValidationResult.error)
+
+  if(userValidationResult.error){
+    return res.status(400).send(
+      {message:JSON.parse(userValidationResult.error.message)}
+    )
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
