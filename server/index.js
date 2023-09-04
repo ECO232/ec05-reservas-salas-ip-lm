@@ -7,7 +7,16 @@ app.use(express.urlencoded({extended:true}));
 
 const {validateUser} = require()
 
-app.get('/', (req, res) => {
+let users=[]
+users.push({
+  name:"Lolita",
+  last:"Bueno",
+  id:"1234567890"
+})
+
+
+app.get('/users/:id', (req, res) => {
+  console.log("params:",req.params)
   res.send('Hello World!')
 })
 
