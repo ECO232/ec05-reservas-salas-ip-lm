@@ -3,9 +3,9 @@ const app = express()
 const port = 3000
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended:true }));
 
-const {validateUser} = require()
+const {validateUser} = require('./schemas/user')
 
 let users=[]
 users.push({
@@ -52,7 +52,12 @@ app.get('/', (req, res) => {
   res.send("Reserva tu sala")
 })
 
-
+app.delete('users/:id', (req, res) => {
+  const idToDelete = req.params.id;
+  let indexToDelete = users.findIndex(user=>user.id==idToDelete)
+  let userDeleted = users.splice(indexToDelete, 1)
+  res.send("Se eliminó correctamente el usuario con id:" + userDeleted[0].id)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
