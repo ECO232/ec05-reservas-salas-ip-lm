@@ -17,7 +17,16 @@ users.push({
 
 app.get('/users/:id', (req, res) => {
   console.log("params:",req.params)
-  res.send('Hello World!')
+  const requestID =req.params.id
+  let requiredUser=null;
+  for(let index=0; index<users.length;index++){
+    console.log(users[index].id===requestID,users[index].id,requestID)
+    if(users[index].id===requestID){
+      requiredUser=users[index];
+    }
+  }
+  console.log (requiredUser)
+  res.json(requiredUser)
 })
 
 app.listen(port, () => {
