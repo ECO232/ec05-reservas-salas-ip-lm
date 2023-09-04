@@ -38,7 +38,16 @@ app.post('/users', (req, res) => {
       {message:JSON.parse(userValidationResult.error.message)}
     )
   }
+
+  let newUser = {
+    name:userValidationResult.data.name,
+    last:userValidationResult.data.last,
+    id:userValidationResult.data.last
+  }
+  users.push(newUser)
+  res.status(201).send({"message":"Creación Exitosa!", "user":newUser})
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
