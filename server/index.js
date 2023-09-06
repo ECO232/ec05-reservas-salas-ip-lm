@@ -145,7 +145,7 @@ app.get('/room', (req, res) => {
 })
 
 app.put('/room/:name', (req, res) => {
-  let index = room.findIndex(room => room.name == req.params.name)
+  let index = room.findIndex(Room => Room.name == req.params.name)
   let newRoom = {
     name:req.body.name,
     location:req.body.location,
