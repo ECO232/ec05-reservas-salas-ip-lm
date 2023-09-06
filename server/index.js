@@ -9,13 +9,64 @@ const {validateUser} = require('./schemas/user')
 const {validateRoom} = require('./schemas/room')
 
 let users=[]
-let room=[]
 
 users.push({
   name:"Lolita",
   last:"Bueno",
   id:"1234567890"
 })
+
+const room=[
+  {
+    name:'room 202',
+    location:'Library',
+    schedules: [
+      {
+        start:'9:00AM',
+        finish:'10:00AM',
+        isAvailable:true,
+        userName:'',
+        id:''
+      },
+      {
+        start:'10:00AM',
+        finish:'11:00AM',
+        isAvailable:true,
+        userName:'',
+        id:''
+      },
+      {
+        start:'11:00AM',
+        finish:'12:00PM',
+        isAvailable:true,
+        userName:'',
+        id:''
+      }
+    ]
+  },
+
+  {
+    name:'room 203',
+    location:'Library',
+    schedules: []
+  },
+  {
+    name:'room 204',
+    location:'Library',
+    schedules: []
+  },
+  {
+    name:'room 205',
+    location:'Library',
+    schedules: []
+  },
+  {
+    name:'room 206',
+    location:'Library',
+    schedules: []
+  }
+
+]
 
 
 app.get('/users/:id', (req, res) => {
@@ -50,6 +101,8 @@ app.post('/users', (req, res) => {
   users.push(newUser)
   res.status(201).send({"message":"Creación Exitosa!", "user":newUser})
 })
+
+
 
 app.get('/', (req, res) => {
   res.send("Reserva tu sala")
