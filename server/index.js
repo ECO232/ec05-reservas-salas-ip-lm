@@ -5,11 +5,14 @@ const port = 3000
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
+const cors = require('cors');
+app.use(cors())
+
 const {validateUser} = require('./schemas/user')
 const {validateRoom} = require('./schemas/room')
+const { object } = require('zod');
 
 let users=[]
-
 users.push({
   name:"Lolita",
   last:"Bueno",
@@ -18,9 +21,9 @@ users.push({
 
 const room=[
   {
-    name:'room 202',
+    name:'room 201',
     location:'Library',
-    schedules: [
+    schedule: [
       {
         start:'9:00AM',
         finish:'10:00AM',
@@ -46,28 +49,37 @@ const room=[
   },
 
   {
+    name:'room 202',
+    location:'Library',
+    schedule: []
+  },
+  {
     name:'room 203',
     location:'Library',
-    schedules: []
+    schedule: []
   },
   {
     name:'room 204',
     location:'Library',
-    schedules: []
+    schedule: []
   },
   {
     name:'room 205',
     location:'Library',
-    schedules: []
+    schedule: []
   },
   {
     name:'room 206',
     location:'Library',
-    schedules: []
+    schedule: []
   }
 
 ]
 
+
+app.get('/users', (req, res) =>{
+  res.send({"users":users})
+})
 
 app.get('/users/:id', (req, res) => {
   console.log("params:",req.params)
@@ -103,11 +115,6 @@ app.post('/users', (req, res) => {
 })
 
 
-
-app.get('/', (req, res) => {
-  res.send("Reserva tu sala")
-})
-
 app.delete('users/:id', (req, res) => {
   const idToDelete = req.params.id;
   let indexToDelete = users.findIndex(user=>user.id==idToDelete)
@@ -115,10 +122,35 @@ app.delete('users/:id', (req, res) => {
   res.send("Se eliminó correctamente el usuario con id:" + userDeleted[0].id)
 })
 
+
+
+
 app.use("", (req, res) => {
   res.status(404).send("No encontramos el recurso solicitado")
 })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+})
+
+app.get('/', (req, res) => {
+  res.send("Reserva tu sala")
+})
+
+
+
+
+app.get('/room', (req, res) => {
+  res.send({"room": room})
+})
+
+app.put('/room/:name', (req, res) => {
+  let index = room.findIndex(room => room.name == req.params.name)
+  let newRoom = {
+    name:req.body.name,
+    location:req.body.location,
+    schedule:req.body.schedule,
+  }
+  room[index] = newRoom
+  res.send("Room updated" + newRoom)
 })
