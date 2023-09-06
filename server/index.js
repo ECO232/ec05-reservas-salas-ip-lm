@@ -28,21 +28,21 @@ const room=[
         start:'9:00AM',
         finish:'10:00AM',
         isAvailable:true,
-        userName:'',
+        username:'',
         id:''
       },
       {
         start:'10:00AM',
         finish:'11:00AM',
         isAvailable:true,
-        userName:'',
+        username:'',
         id:''
       },
       {
         start:'11:00AM',
         finish:'12:00PM',
         isAvailable:true,
-        userName:'',
+        username:'',
         id:''
       }
     ]
