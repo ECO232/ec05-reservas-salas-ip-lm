@@ -6,7 +6,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
 const {validateUser} = require('./schemas/user')
-const {validateReservation} = require('./schemas/reserve')
 const {validateRoom} = require('./schemas/room')
 
 let users=[]
