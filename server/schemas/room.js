@@ -5,13 +5,13 @@ const roomSchema = z.object({
         invalid_type_error: 'Room name must be a String',
         required_error: 'Room name is required'
     }),
-    building: z.string({
-        invalid_type_error: 'Room building must be a String',
-        required_error: 'Room building is required'
+    location: z.string({
+        invalid_type_error: 'Room location must be a String',
+        required_error: 'Room location is required'
     }).default("Unknown"),
-    reservation: z.array({
-        invalid_type_error: 'Room reservation must be a Number',
-        required_error: 'Room reservation is required'
+    schedule: z.array({
+        invalid_type_error: 'Room schedule must be a Number',
+        required_error: 'Room schedule is required'
     }),
 })
 

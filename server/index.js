@@ -10,7 +10,6 @@ const {validateReservation} = require('./schemas/reserve')
 const {validateRoom} = require('./schemas/room')
 
 let users=[]
-let reserve=[]
 let room=[]
 
 users.push({
