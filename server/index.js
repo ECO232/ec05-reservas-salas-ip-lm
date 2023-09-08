@@ -123,7 +123,7 @@ app.delete('users/:id', (req, res) => {
 })
 
 
-
+//Rooms ------------------------------------------------------------------------------------------------
 
 app.use("", (req, res) => {
   res.status(404).send("No encontramos el recurso solicitado")
